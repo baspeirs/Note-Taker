@@ -48,12 +48,32 @@ const renderActiveNote = () => {
     $noteText.val("");
   }
 };
+// lets write a function that creates an id for the notes
+ 
+const handleNoteId = () => {
+  const characterList = "abcdefghijklmnopqrstuvwxyz";
+  const charArr = characterList.split("");
+  const numberList = "1234567890";
+  const numbArr = numberList.split("");
+  let idHolder = [];
+  for (let i = 0; i < 2; i++) {
+    let characterSelect = charArr[Math.floor(Math.random() * charArr.length)];
+    idHolder.push(characterSelect);
+  }
+  for (let i = 0; i < 2; i++) {
+    let numberSelect = numbArr[Math.floor(Math.random() * numbArr.length)];
+    idHolder.push(numberSelect);
+  }
+  let newId = idHolder.join("");
+  return newId;
+}
 
 // Get the note data from the inputs, save it to the db and update the view
 const handleNoteSave = function () {
   const newNote = {
     title: $noteTitle.val(),
     text: $noteText.val(),
+    id: handleNoteId()
   };
 
   saveNote(newNote).then(() => {
