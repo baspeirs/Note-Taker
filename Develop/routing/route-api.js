@@ -8,5 +8,19 @@ module.exports = app => {
 
     app.post("/api/notes", (req, res) => {
         noteData.push(req.body)
+    });
+
+    app.delete("/api/notes/:id", (req, res) => {
+        const requestId = req.params.id;
+
+        let note = noteData.filter(note => {
+            return note.id == requestId;
+        })[0];
+
+        const index = noteData.indexOf(note);
+
+        noteData.splice(index, 1);
+
+        res.json({ message: `User ${requestId} deleted!`})
     })
 }
