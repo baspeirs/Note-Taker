@@ -21,4 +21,4 @@ app.use("/public", express.static('./public/'));
 // now make your server listen
 app.listen(PORT, () => {
     console.log("App listening on PORT: " + PORT)
-})
+});
