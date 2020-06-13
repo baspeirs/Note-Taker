@@ -4,8 +4,8 @@ const path = require("path");
 
 // set variable for app and PORT
 const app = express();
-// const PORT = process.env.PORT || 3000;
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+
 
 // set up data parsing using app.use and convert to json
 app.use(express.urlencoded({ extended: true }));
